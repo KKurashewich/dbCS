@@ -23,6 +23,9 @@ class Table{
         string getTableName();
         vector<string> getDataTypes();
         vector<string> getDataNames();
+        void removeDataName(string dataName);
+        void addDataName(string dataName, string dataType);
+        int getDataNameIndex(string dataName);
         int getCount();
         int getVariableCount();
         void incrementCount();
@@ -34,7 +37,8 @@ class Table{
         string generateCushion(string data);
         void setTableInfo(string info);
         string getTableInfo();// returns the string that wholds data names and types
-        string convertInfo(vector<string> dataNames, vector<string> data); //convert info to row format in single string
+        string convertRowData(vector<string> data); //convert info to row format in single string
+        string convertInfo(vector<string> data);
         vector<string> parseInfo(string info);//converts single string into parsed info
         int getStartLocation(int rowIndex, int columnIndex);
         int getEndLocation(int rowIndex, int columnIndex);

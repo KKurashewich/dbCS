@@ -17,8 +17,22 @@ void displayVector(vector<type> data){
 
 int main(){
 
-   DataBase datatest("db_1");
-   datatest.pushTableInfo("testone");
-   datatest.replace("testone", 0, 300, "12345678911234567892                                                                                                                                                                                                                                                                                        ");
-   return 0;
+    DataBase datatest("db_1");
+    datatest.addDataColumnToTable("testthree", "dataName", "dataType", "12345%         ");
+    //datatest.replace("testthree", {"12345%         "}, -1, 3, 2);
+    //datatest.replace("testthree", {"one%           ","two%           ","two%           "}, -1, 3, 2);//adding column at index 2
+    //datatest.createTable("testone", {"name", "city", "state"}, {"char", "char", "char(20)"}, 30);    
+    //datatest.deleteTable("testTwo");
+    //datatest.addRowToTable("testthree", {"kevin", "reno", "nevada"}); 
+    //datatest.addDataColumnToTable("testone", "random", "char(20)"); 
+    //string test = "0,30,name,char,city,char,state,char(20)%                                                  ";
+    //datatest.addDataColumnToTable("testone", "random", "char(20)"); 
+    //datatest.replace("testthree", {"one%           ","two%           ","two%           "}, -1, 2, 1);//adding column at index 2
+    //datatest.replace("testthree", {"one%           ","two%           ","two%           "}, -1, 0, 0);//replace column index 0
+    //datatest.replace("testthree", {"one%           two%           two%           "}, 1, 0, 2);//replaceing row at index 1
+    //datatest.replace("testthree",{"one%           "}, 1, 0, 0);//replaceing single variable at index row=1, col=0
+
+    //datatest.replace("testthree", {"ren1%          "}, 2, 2, 2);
+    //cout << test.length()<<endl;
+    return 0;
 }

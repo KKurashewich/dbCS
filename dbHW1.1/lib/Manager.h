@@ -12,6 +12,7 @@ using namespace std;
 class Manager{
     private:
         vector<DataBase> dataBases;
+        int selectedIndex;
     public:
         Manager();   //search for dataBases
         ~Manager();
@@ -21,6 +22,9 @@ class Manager{
         bool dataBaseExists(string dataBaseName);
         void createDataBase(string dataBaseName);
         void deleteDataBase(string dataBaseName);
+        void selectDataBase(string dataBaseName);
+        vector<string> parseCommand(string command);
+        void doCommands(vector<string> commands);
 };
 
 #endif

@@ -23,3 +23,6 @@ DataBase.o: $(PATH)DataBase.h $(PATH)Table.h $(PATH)DataBase.cpp
 
 Manager.o: $(PATH)Manager.h $(PATH)DataBase.h $(PATH)Table.h $(PATH)Manager.cpp
 	$(CXX) $(CXXFLAGS) -c $(PATH)Manager.cpp
+clean:
+	-rm *.o
+	
