@@ -39,6 +39,7 @@ void DataBase::replace(string tableName, vector<string> info, int rowIndex, int 
     int startRead;
     int endRead;
     char *infoChunk;
+    
     string newData ="";
     int tX = this->tableIndex(tableName);
     ifstream iFile(this->dataBaseName + '/'+tableName); 
@@ -47,16 +48,20 @@ void DataBase::replace(string tableName, vector<string> info, int rowIndex, int 
     //length --; //to be the index
     iFile.seekg(0, iFile.beg); 
     if(rowIndex == -1){
+        
         rowCount = this->tables[tX].getCount();
         for(int y = 1; y <= rowCount; y++){
+            
             startRead = this->tables[tX].getStartLocation(y, colStartIndex);
             endRead = this->tables[tX].getEndLocation(y, colEndIndex);
             infoChunk = new char [startRead - currentReadIndex+1];
             iFile.read(infoChunk, startRead - currentReadIndex);
             infoChunk[startRead - currentReadIndex] = '\0';
             if(info.size() == 1){
+                cout << "here" << endl;
                 newData += infoChunk + info[0];
             }else{
+                cout << "here1" << endl;
                 newData += infoChunk + info[y-1];
             }
             delete [] infoChunk;
@@ -128,7 +133,7 @@ void DataBase::addDataColumnToTable(string tableName, string dataName, string da
     int variableCount = this->tables[tX].getVariableCount();
   
     this->replace(tableName, {defaultValue}, -1, variableCount, variableCount-1);//adding column
-
+    
     string info = this->tables[tX].getTableInfo();
     string formated = "";
     int x = 0;
@@ -136,13 +141,13 @@ void DataBase::addDataColumnToTable(string tableName, string dataName, string da
         formated+=info[x];
         x++;
     }
-    formated+=','+dataName+','+dataType+'%';
+    formated+=','+dataName+','+dataType;
     Table cpy("cpy", formated);
     formated = cpy.getTableInfo();
 
     this->tables[tX].addDataName(dataName, dataType);
-    //this->replace(tableName, {formated}, 0, 0, variableCount-1);//replaceing row at index 1
-
+    this->replace(tableName, {formated}, 0, 0, variableCount-1);//replaceing row at index 1
+  
     
     //pushTableInfo(tableName, defaultValue);
 }
