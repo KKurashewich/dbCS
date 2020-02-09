@@ -29,7 +29,9 @@ class Manager{
         void mountDataBase(string dBName);
         void displayInfoFromTable(string tableName);
         void addColumnToTable(string tableName, string dataName, string dataType, string defaultValue = "NULL");
+        
         void createTable(string tableName, vector<string> dataNames, vector<string> dataTypes);
+        void createTable2(string tableName, string info);
         void deleteTable(string tableName);
 
         void exit();

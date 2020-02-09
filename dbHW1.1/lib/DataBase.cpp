@@ -122,6 +122,7 @@ void DataBase::createTable(string tableName, vector<string> dataTypes, vector<st
     this->tables.push_back(newTable);
 }
 void DataBase::deleteTable(string tableName){
+    this->tables.erase(this->tables.begin() + tableIndex(tableName));
     fs::remove(this->dataBaseName+'/'+tableName);
 }
 void DataBase::addDataColumnToTable(string tableName, string dataName, string dataType, string defaultValue){
