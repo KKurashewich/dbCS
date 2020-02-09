@@ -17,8 +17,17 @@ void displayVector(vector<type> data){
 
 int main(){
 
-    DataBase datatest("db_1");
-    datatest.addDataColumnToTable("testthree", "dataName", "dataType", "12345%         ");
+    Manager test("dataBaseCollection");
+    displayVector(test.parseCommand("CREATE TABLE tbl_2 (a3 float, a4 char(20));"));
+    //test.createDataBase("db_2");
+    //test.deleteDataBase("db_2");
+    //test.mountDataBase("db_1");
+    //test.addColumnToTable("testone", "2ar", "char", "NULL");
+    //test.createTable("db_3", {"xLoc", "yLoc", "size"}, {"int", "int", "int"});
+    //test.deleteTable("db_3");
+    //test.displayInfoFromTable("testone");
+    //DataBase datatest("db_1");
+    //datatest.addDataColumnToTable("testthree", "dataName", "dataType", "12345%         ");
     //datatest.replace("testthree", {"12345%         "}, -1, 3, 2);
     //datatest.replace("testthree", {"one%           ","two%           ","two%           "}, -1, 3, 2);//adding column at index 2
     //datatest.createTable("testone", {"name", "city", "state"}, {"char", "char", "char(20)"}, 30);    

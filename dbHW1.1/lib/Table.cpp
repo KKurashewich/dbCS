@@ -148,12 +148,13 @@ void Table::displayRow(string row){
     cout << endl;
 }
 void Table::displayInfo(){
-    cout <<"tableName: "<<this->tableName<< ", rowCount: "<< this->count <<", variableCushion: "<< this->variableCushion << " <TYPE COLUMNNAME, ...><";
+    //cout <<"tableName: "<<this->tableName<< ", rowCount: "<< this->count <<", variableCushion: "<< this->variableCushion << " <TYPE COLUMNNAME, ...><";
+    //a1 int | a2 varchar(20) | a3 float
     for(int x = 0; x < this->dataNames.size(); x++){
-         cout << this->dataTypes[x] << " "<< this->dataNames[x];
+         cout << this->dataNames[x] << " "<< this->dataTypes[x];
          if(x +1 < this->dataNames.size()){
-             cout << ", ";
+             cout << "| ";
          }
     }
-    cout << ">" << endl;
+    cout << endl;
 }

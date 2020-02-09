@@ -32,7 +32,7 @@ class DataBase{
         void addRowToTable(string tableName, vector<string> attributeValues);
         void deleteRowFromTable(string tableName, string attributeName, string value);
         void displayTable(string tableName);
-        void displayTablesInfo();
+        void displayTablesInfo(int tableIndex);
         //void replace(string tableName, int startIndex, int endIndex, string info);
         void replace(string tableName, vector<string> info, int rowIndex, int colStartIndex, int colEndIndex);
         //void appendString(string rowInfo);

@@ -58,10 +58,8 @@ void DataBase::replace(string tableName, vector<string> info, int rowIndex, int 
             iFile.read(infoChunk, startRead - currentReadIndex);
             infoChunk[startRead - currentReadIndex] = '\0';
             if(info.size() == 1){
-                cout << "here" << endl;
                 newData += infoChunk + info[0];
             }else{
-                cout << "here1" << endl;
                 newData += infoChunk + info[y-1];
             }
             delete [] infoChunk;
@@ -87,7 +85,6 @@ void DataBase::replace(string tableName, vector<string> info, int rowIndex, int 
     
     delete [] infoChunk;
     iFile.close();
-    cout << newData;
     ofstream oFile(this->dataBaseName + '/'+tableName);
     oFile << newData;
     oFile.close();
@@ -131,7 +128,7 @@ void DataBase::addDataColumnToTable(string tableName, string dataName, string da
     int tX = tableIndex(tableName);
     //Table tableCopy = this->tableCopy;
     int variableCount = this->tables[tX].getVariableCount();
-  
+    defaultValue = this->tables[tX].generateCushion(defaultValue);
     this->replace(tableName, {defaultValue}, -1, variableCount, variableCount-1);//adding column
     
     string info = this->tables[tX].getTableInfo();
@@ -158,7 +155,7 @@ void DataBase::deleteDataColumnFromTable(string tableName, string dataName){
 
 
 
-    this->tables[tX].removeDataName(dataName);
+    //this->tables[tX].removeDataName(dataName);
     //pushTableInfo(tableName, "");
 }
 
@@ -181,7 +178,7 @@ void DataBase::deleteRowFromTable(string tableName, string attributeName, string
 void DataBase::displayTable(string tableName){
 
 }
-void DataBase::displayTablesInfo(){
-    
+void DataBase::displayTablesInfo(int tableIndex){
+    this->tables[tableIndex].displayInfo();
 }
 

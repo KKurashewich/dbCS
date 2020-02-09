@@ -6,23 +6,26 @@
 CXX = g++
 CXXFLAGS = -Wall -g -std=c++17
 PATH = lib/
+OBJP = obj/
+
 # ****************************************************
 # Targets needed to bring the executable up to date
+#$(OBJP)main.o $(OBJP)Manager.o $(OBJP)DataBase.o $(OBJP)Table.o
 
-main: main.o Manager.o DataBase.o Table.o
-	$(CXX) $(CXXFLAGS) -o main main.o Manager.o DataBase.o Table.o
 
-main.o: main.cpp $(PATH)Manager.h $(PATH)DataBase.h $(PATH)Table.h
-	$(CXX) $(CXXFLAGS) -c main.cpp
+main: $(OBJP)main.o $(OBJP)Manager.o $(OBJP)DataBase.o $(OBJP)Table.o
+	$(CXX) $(CXXFLAGS) -o main $^
+	
+$(OBJP)main.o: main.cpp $(PATH)Manager.h $(PATH)DataBase.h $(PATH)Table.h
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
     
-Table.o: $(PATH)Table.h $(PATH)Table.cpp
-	$(CXX) $(CXXFLAGS) -c $(PATH)Table.cpp
+$(OBJP)Table.o:  $(PATH)Table.cpp $(PATH)Table.h
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-DataBase.o: $(PATH)DataBase.h $(PATH)Table.h $(PATH)DataBase.cpp
-	$(CXX) $(CXXFLAGS) -c $(PATH)DataBase.cpp
+$(OBJP)DataBase.o: $(PATH)DataBase.cpp $(PATH)DataBase.h $(PATH)Table.h 
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-Manager.o: $(PATH)Manager.h $(PATH)DataBase.h $(PATH)Table.h $(PATH)Manager.cpp
-	$(CXX) $(CXXFLAGS) -c $(PATH)Manager.cpp
-clean:
-	-rm *.o
+$(OBJP)Manager.o: $(PATH)Manager.cpp $(PATH)Manager.h $(PATH)DataBase.h $(PATH)Table.h 
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
 	
